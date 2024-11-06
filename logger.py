@@ -1,9 +1,12 @@
+import threading
 import time
 
 
 class Logger:
     def __init__(self):
         self.log_path = "latest.log"
+        self.lock = threading.Lock()
+
         self.__init_logger_file()
 
     def __init_logger_file(self):
@@ -11,11 +14,12 @@ class Logger:
         self.info("LOGGER", "Logger Initialized")
 
     def write(self, log_type, log_location, log_message):
-        with open(self.log_path, "a") as log_file:
-            data = f"{round(time.time())} - [{log_type}][{log_location}] {log_message}"
+        with self.lock:
+            with open(self.log_path, "a") as log_file:
+                data = f"{round(time.time())} - [{log_type}][{log_location}] {log_message}"
 
-            log_file.write(data + "\n")
-            print(data)
+                log_file.write(data + "\n")
+                print(data)
 
     def info(self, log_location, log_message):
         self.write("INFO", log_location, log_message)
