@@ -10,7 +10,7 @@ class BaseAPI:
     def get_mod_info(self, mod_id: str) -> dict:
         raise NotImplementedError
 
-    def download_mod(self, mod_id: str):
+    def download_mod_version(self, mod_version):
         raise NotImplementedError
 
     def search_for_mods(self, search_query: str) -> list:

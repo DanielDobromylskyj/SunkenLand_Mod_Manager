@@ -34,7 +34,7 @@ class NexusMods(BaseAPI):  # Testing | Do I need to make server to handle api ca
         webbrowser.open("https://www.nexusmods.com/sso?id=" + user_uuid + "&application=" + application_slug)
         self.logger.info("NexusModApi", "Launched Auth / Login Page")
 
-    def __get_api_key(self, force_web_auth=False) -> str | None:
+    def __get_api_key(self, force_web_auth=False):
         if os.path.exists("login_info.json") and not force_web_auth:
             self.logger.info("NexusModApi", "Loading Api Key")
             with open("login_info.json", "r") as f:
@@ -100,13 +100,6 @@ class NexusMods(BaseAPI):  # Testing | Do I need to make server to handle api ca
         for file in response["files"]:  # find the main file | todo - make it version controlled
             if file["category_name"] == "MAIN":
                 self.download_file(mod_id, file)
-
-
-class ThunderStore(BaseAPI):
-    def __init__(self):
-        pass
-
-
 
 if __name__ == "__main__":
     from logger import Logger
