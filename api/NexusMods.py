@@ -6,9 +6,10 @@ import os
 import json
 
 from api.api_wrappers import cache_with_timeout as cache_with_timeout
+from api.api_util import BaseAPI
 
 
-class NexusMods:  # Testing | Do I need to make server to handle api calls?
+class NexusMods(BaseAPI):  # Testing | Do I need to make server to handle api calls?
     def __init__(self, logger_instance):
         self.logger = logger_instance
         self.game_domain = "sunkenland"
@@ -101,7 +102,7 @@ class NexusMods:  # Testing | Do I need to make server to handle api calls?
                 self.download_file(mod_id, file)
 
 
-class ThunderStore:
+class ThunderStore(BaseAPI):
     def __init__(self):
         pass
 

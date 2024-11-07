@@ -3,13 +3,16 @@ import threading
 import time
 import os
 
+from mod.util import Mod, ModList
+
 
 class Cache:
-    def __init__(self, name: str, update_callback):
+    def __init__(self, name: str, update_callback, download_version_callback):
         self.path = self.get_full_path(name)
         self.last_cache_update = -1
         self.time_between_cache_updates = 30 * 60
         self.update_callback = update_callback
+        self.download_version_callback = download_version_callback
 
     @staticmethod
     def get_full_path(name):
@@ -136,14 +139,18 @@ class Cache:
         cursor = conn.cursor()
 
         cursor.execute('''
-        SELECT * FROM Mods
+        SELECT uuid, display_name, owner, web_url, rating, deprecated, last_update FROM Mods
         WHERE full_name LIKE ?
         ''', ('%' + search_term + '%',))
 
         results = cursor.fetchall()
         conn.close()
 
-        return results
+        list_of_mods = ModList()
+        for mod_data in results:
+            list_of_mods.add_mod(Mod(*mod_data))
+
+        return list_of_mods
 
     def get_mod_versions(self, mod_uuid):
         conn = self.get_db()
@@ -160,4 +167,32 @@ class Cache:
 
         return results
 
+    def mod_version_is_cached(self, uuid):
+        conn = self.get_db()
+        cursor = conn.cursor()
+
+        cursor.execute('''
+        SELECT cache_data FROM Versions
+        WHERE mod_uuid = ?
+        ''', (uuid,))
+
+
+        results = cursor.fetchone()
+        conn.close()
+
+        print(results)
+
+    def get_version_cache(self, uuid):
+        conn = self.get_db()
+        cursor = conn.cursor()
+
+        cursor.execute('''
+        SELECT cache_data FROM Versions
+        WHERE mod_uuid = ?
+        ''', (uuid,))
+
+        results = cursor.fetchone()
+        conn.close()
+
+        return results
 

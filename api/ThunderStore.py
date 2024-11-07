@@ -56,3 +56,5 @@ class ThunderStore:
         results = requests.get("https://thunderstore.io/api/v1/package/?game=sunkenland").json()
         self.logger.info("THUNDERSTORE", f"GET | Mod List | Took {round((time.time() - start) * 1000)}ms")
         return results
+
+    def down
