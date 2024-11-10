@@ -3,8 +3,6 @@ import threading
 import time
 import os
 
-from mod.util import Mod, ModVersion, ModList
-
 
 class Cache:
     def __init__(self, name: str, update_callback, download_version_callback):

@@ -43,6 +43,27 @@ class ModVersion:
         return f"<ModVersion mod_id={self.mod_id}, display_name={self.display_name}, version={self.version}, file_size={self.file_size}, dependencies={self.dependencies}>"
 
 
+class VersionList:
+    def __init__(self):
+        self.versions = []
+
+    def add_version(self, version):
+        self.versions.append(version)
+
+    def __iter__(self):
+        for version in self.versions:
+            yield version
+
+    def __getitem__(self, item):
+        if type(item) is str:
+            for version in self:
+                if version.version == item:
+                    return version
+
+        else:
+            return self.versions[item]
+
+
 class ModList:
     def __init__(self):
         self.mods = []
@@ -55,6 +76,10 @@ class ModList:
             yield mod
 
     def __getitem__(self, item):
-        for mod in self:
-            if mod.mod_id == item:
-                return mod
+        if type(item) is str:
+            for mod in self:
+                if mod.mod_id == item:
+                    return mod
+
+        else:
+            return self.mods[item]

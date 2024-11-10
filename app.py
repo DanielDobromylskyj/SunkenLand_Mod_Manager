@@ -11,7 +11,7 @@ class App:
     def __init__(self):
         self.logger = Logger()
 
-        self.mod_apis = [api.NexusMods.NexusMods, api.ThunderStore.ThunderStore]
+        self.mod_apis = [api.ThunderStore.ThunderStore]
         self.loaded_mod_apis = []
 
     def __init_apis(self):

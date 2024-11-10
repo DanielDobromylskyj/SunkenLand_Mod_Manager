@@ -1,19 +1,13 @@
-1730981215 - [INFO][LOGGER] Logger Initialized
-1730981215 - [INFO][LOADER] Attempting to loading 2 APIs...
-1730981215 - [INFO][APP] Loading UI
-1730981215 - [INFO][LOADER] Loading NexusMods (1/2)
-1730981215 - [INFO][APP] Creating Viewport
-1730981215 - [INFO][LOADER] NexusMods API Required Auth/Login
-1730981215 - [INFO][APP] Setting up dearpygui
-1730981215 - [INFO][LOADER] Logged in to NexusMods
-1730981215 - [INFO][LOADER] Loading ThunderStore (2/2)
-1730981215 - [INFO][THUNDERSTORE] Loading Cache
-1730981215 - [INFO][THUNDERSTORE] Found cache database
-1730981216 - [INFO][THUNDERSTORE] GET | Mod List | Took 981ms
-1730981216 - [INFO][THUNDERSTORE] Cache | Pulled 5419 mods
-1730981216 - [INFO][THUNDERSTORE] Cache | Prepared Mods
-1730981216 - [INFO][THUNDERSTORE] Cache | Update Complete
-1730981220 - [INFO][THUNDERSTORE] Downloading | Mod | <ModVersion mod_id=f21c391c-0bc5-431d-a233-95323b95e01b, display_name=r2modman, version=3.0.0, file_size=48871582, dependencies=[]>
-1730981220 - [INFO][THUNDERSTORE] Downloading | Mod | Getting dependencies
-1730981220 - [INFO][THUNDERSTORE] Downloading | Mod | Getting main file
-1730981225 - [INFO][LOADER] Logged in to ThunderStore
+1731269442 - [INFO][LOGGER] Logger Initialized
+1731269442 - [INFO][LOADER] Attempting to loading 1 APIs...
+1731269442 - [INFO][APP] Loading UI
+1731269442 - [INFO][LOADER] Loading ThunderStore (1/1)
+1731269442 - [INFO][APP] Creating Viewport
+1731269442 - [INFO][THUNDERSTORE] Found cache database
+1731269442 - [INFO][THUNDERSTORE] Loading Cache
+1731269442 - [INFO][APP] Setting up dearpygui
+1731269442 - [INFO][THUNDERSTORE] GET | Mod List | Took 562ms
+1731269442 - [INFO][THUNDERSTORE] Cache | Pulled 36 mods
+1731269442 - [INFO][THUNDERSTORE] Cache | Prepared Mods
+1731269442 - [INFO][THUNDERSTORE] Cache | Update Complete
+1731269444 - [INFO][LOADER] Logged in to ThunderStore
