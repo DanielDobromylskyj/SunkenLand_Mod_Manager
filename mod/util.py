@@ -30,15 +30,6 @@ class ModVersion:
 
         self.cache = cache
 
-    def __get_via_download(self) -> bytes:
-        return self.cache.download_version_callback(self)
-
-    def get(self) -> bytes:
-        if self.cache.mod_version_is_cached(self.mod_id, self.version):
-            return self.cache.get_version_cache(self.mod_id, self.version)
-        else:
-            return self.__get_via_download()
-
     def __str__(self):
         return f"<ModVersion mod_id={self.mod_id}, display_name={self.display_name}, version={self.version}, file_size={self.file_size}, dependencies={self.dependencies}>"
 
@@ -49,6 +40,9 @@ class VersionList:
 
     def add_version(self, version):
         self.versions.append(version)
+
+    def reverse(self):
+        self.versions.reverse()
 
     def __iter__(self):
         for version in self.versions:
@@ -70,6 +64,9 @@ class ModList:
 
     def add_mod(self, mod):
         self.mods.append(mod)
+
+    def reverse(self):
+        self.versions.reverse()
 
     def __iter__(self):
         for mod in self.mods:

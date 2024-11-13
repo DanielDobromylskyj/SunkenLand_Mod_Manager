@@ -28,14 +28,13 @@ class ThunderStore(BaseAPI):
         self.update_cache()
 
         # tests
-        time.sleep(2)
-        mods = self.get_trending_mods()
-        mod = mods[4]
-        print(mod)
-        versions = self.get_mod_versions(mod)
-        version = versions.versions[0]
-        self.download_mod_version(version)
-        self.download_mod_version(version)
+        #time.sleep(2)
+        #mods = self.get_trending_mods()
+        #mod = mods[4]
+        #print(mod)
+        #versions = self.get_mod_versions(mod)
+        #version = versions.versions[0]
+        #self.download_mod_version(version)
 
     def load_cache(self):
         self.logger.info("THUNDERSTORE", "Loading Cache")
@@ -78,6 +77,7 @@ class ThunderStore(BaseAPI):
                         ("file_size", "INTEGER"),
                         ("date_created", "TEXT"),
                         ("cache_data", "BLOB DEFAULT NULL"),
+                        ("enabled", "BOOLEAN DEFAULT FALSE"),
                         ("FOREIGN KEY(mod_uuid)", "REFERENCES Mods(uuid)"),
                         ("PRIMARY KEY", "(mod_uuid, version)")
                     ]
@@ -152,13 +152,13 @@ class ThunderStore(BaseAPI):
 
         return list_of_versions
 
-    def get_trending_mods(self):
+    def get_trending_mods(self, limit=10):
         mod_info = self.cache.request(
             "Mods",
             "deprecated = false",
             "uuid, display_name, owner, web_url, rating, deprecated, last_update",
             None,
-            other="ORDER BY rating DESC LIMIT 10"
+            other=f"ORDER BY rating DESC LIMIT {limit}"
         )
 
         list_of_mods = ModList()
@@ -177,6 +177,16 @@ class ThunderStore(BaseAPI):
 
         if len(result) > 0:
             return result[0][0]
+
+    def is_mod_version_enabled(self, mod_version):
+        result = self.cache.request(
+            "Versions",
+            "mod_uuid = ? AND version = ?",
+            "enabled",
+            (mod_version.mod_id, mod_version.version)
+        )
+
+        return result[0][0]
 
     def __get_version_from_full_name(self, full_name):
         results = self.cache.request(
@@ -222,11 +232,18 @@ class ThunderStore(BaseAPI):
                 self.logger.info("THUNDERSTORE",
                                  f"DOWNLOADING | {dependency_mod.display_name} ({dependency_mod.version}) | Found In Cache")
 
-
     def download_mod_version(self, mod_version):
         cache_data = self.get_mod_version_cache(mod_version)
 
         if cache_data is None:
             self.__download(mod_version)
+
+    def enable_mod_version(self, mod_version):
+        raise NotImplementedError
+
+
+    def disable_mod_version(self, mod_version):
+        raise NotImplementedError
+
 
 

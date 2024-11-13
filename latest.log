@@ -1,13 +1,15 @@
-1731269442 - [INFO][LOGGER] Logger Initialized
-1731269442 - [INFO][LOADER] Attempting to loading 1 APIs...
-1731269442 - [INFO][APP] Loading UI
-1731269442 - [INFO][LOADER] Loading ThunderStore (1/1)
-1731269442 - [INFO][APP] Creating Viewport
-1731269442 - [INFO][THUNDERSTORE] Found cache database
-1731269442 - [INFO][THUNDERSTORE] Loading Cache
-1731269442 - [INFO][APP] Setting up dearpygui
-1731269442 - [INFO][THUNDERSTORE] GET | Mod List | Took 562ms
-1731269442 - [INFO][THUNDERSTORE] Cache | Pulled 36 mods
-1731269442 - [INFO][THUNDERSTORE] Cache | Prepared Mods
-1731269442 - [INFO][THUNDERSTORE] Cache | Update Complete
-1731269444 - [INFO][LOADER] Logged in to ThunderStore
+1731524418 - [INFO][LOGGER] Logger Initialized
+1731524418 - [INFO][APP] Loading UI
+1731524418 - [INFO][LOADER] Attempting to loading 1 APIs...
+1731524418 - [INFO][LOADER] Loading ThunderStore (1/1)
+1731524418 - [INFO][APP] Creating Viewport
+1731524418 - [INFO][THUNDERSTORE] Found cache database
+1731524418 - [INFO][THUNDERSTORE] Loading Cache
+1731524418 - [INFO][APP] Setting up dearpygui
+1731524419 - [INFO][THUNDERSTORE] GET | Mod List | Took 537ms
+1731524419 - [INFO][THUNDERSTORE] Cache | Pulled 36 mods
+1731524419 - [INFO][THUNDERSTORE] Cache | Prepared Mods
+1731524419 - [INFO][THUNDERSTORE] Cache | Update Complete
+1731524419 - [INFO][LOADER] Logged in to ThunderStore
+1731524461 - [INFO][APP] Starting Mod Download
+1731524461 - [INFO][THUNDERSTORE] DOWNLOADING | r2modman (3.1.9) | 132.34Mb
