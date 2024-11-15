@@ -29,6 +29,7 @@ def wrap_text(text, max_length):
 
     return "\n".join(lines)
 
+
 def hard_wrap(text, max_length):
     words = list(text)
     lines = []
@@ -162,7 +163,7 @@ class App:
             dpg.add_text("Sunkenland Mod Manager - Supporting Thunderstore.io & NexusMods (one day)")
 
             with dpg.tab_bar():
-                with dpg.tab(label="My Mods", tag="my_mod_tab", drop_callback=self.load_items):
+                with dpg.tab(label="My Mods", tag="my_mod_tab"):
                     with dpg.group(horizontal=True):
                         with dpg.child_window(width=250, height=-10) as self.list_window:
                             self.load_items()
